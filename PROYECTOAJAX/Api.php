@@ -1,17 +1,15 @@
 <?php
     include_once ("funcs.php");
     $func=$_REQUEST["func"];
-  //  $pswd=$_REQUEST["pswd"];
-// $usu=$_REQUEST["usu"];
     switch ($func){
-        case 1: echo login();
+        case 1: echo login("a","a");
             break;
-        case 2: logoff();
+        case 2: echo logoff();
             break;
-        case 3: select();
+        case 3: echo select();
             break;
-        case 4: insert();
+        case 4: echo insert();
             break;
-        case 5: delete();
+        case 5: echo delete();
             break;
     }

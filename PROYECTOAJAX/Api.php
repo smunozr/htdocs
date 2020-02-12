@@ -3,7 +3,7 @@
     include_once ("funcs.php");
     $func=$_REQUEST["func"];
     switch ($func){
-        case 1: echo login("a","a");
+        case 1: echo loggear("a","a");
             break;
         case 2: echo logoff();
             break;

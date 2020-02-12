@@ -1,5 +1,5 @@
 <?php
-    function login($usu,$pw)
+    function loggear($usu,$pw)
     {
         $xml="";
        /* $mbd= new PDO('mysql:host=localhost;dbname=ajax',"root" );
@@ -14,7 +14,7 @@
         }else{
             $xml="<xml><status>FAIL</status></xml>";
         }*/
-        $cnn=mysqli_connect("localhost","root","","ajax");
+        $cnn = mysqli_connect("localhost", "root", "", "ajax");
         $sql = "SELECT usuario FROM login WHERE usuario='$usu' AND contraseña='$pw'";
         $res = mysqli_query($cnn, $sql);
         if (mysqli_num_rows($res)==1){
@@ -29,20 +29,21 @@
 
     function logoff(){
         header("Content-Type: text/xml");
-        $xml = "";
+      /*  $xml = "";
         if($_SESSION["login"]==true){
             session_destroy();
             $xml="<xml><session>ABORTED</session></xml>";
         }else{
             $xml="<xml><session>FAIL</session></xml>";
         }
-        return $xml;
+        return $xml;*/
+        return "<xml><status>OK</status></xml>";
     }
 
     function insert($id,$tituilo,$duracion){
         header("Content-Type: application/json");
         $json="";
-        if($_SESSION["login"]==true){
+      //  if($_SESSION["login"]==true){
             $cnn=mysqli_connect("localhost","root","","ajax");
             $sql="INSERT INTO articulos values ('$id','$tituilo','$duracion')";
             $result= mysqli_query($cnn, $sql);
@@ -53,7 +54,7 @@
                 'duracion':'$duracion'
                 }
             }";
-        }
+       // }
 
         return $json;
     }
@@ -61,7 +62,7 @@
     function select(){
         header("Content-Type: application/json");
         $json="";
-        if ($_SESSION["login"]==true) {
+       // if ($_SESSION["login"]==true) {
             $cnn = mysqli_connect("localhost", "root", "", "ajax");
             $sql = "SELECT titulo, duracion FROM articulos";
             $res = mysqli_query($cnn, $sql);
@@ -79,7 +80,7 @@
             }
            $json.="}
            }";
-        }
+        //}
         return $json;
     }
 

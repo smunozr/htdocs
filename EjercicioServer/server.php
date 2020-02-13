@@ -38,8 +38,8 @@ function printValue($value,$token){
     $mbd= new PDO('mysql:host=localhost;dbname=servicios',"root");
     $sql = "SELECT clave FROM claves WHERE clave='$token'";
     $row=$mbd->query($sql);
-    if(sizeof($row)==1){
-        echo $value;
+    if($row->rowCount()==1){
+        return $value;
     }
     $mbd=null;
 }
@@ -50,8 +50,9 @@ function giveFecha($token){
     $mbd= new PDO('mysql:host=localhost;dbname=servicios',"root");
     $sql ="SELECT clave FROM claves WHERE clave='$token'"; ;
     $row=$mbd->query($sql);
-    if(sizeof($row)==1){
-        echo $dia;
+    if($row->rowCount()==1){
+        return $dia;
     }
+    $mbd=null;
 }
 @$server->service(file_get_contents("php://input"));

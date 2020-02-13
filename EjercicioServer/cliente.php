@@ -1,5 +1,5 @@
 <?php
-    $clienteSOAP=new SoapClient('http://localhost/EjercicioServer/server.php?wsdl');
+    $clienteSOAP=new SoapClient('http://localhost/PHP/EjercicioServer/server.php?wsdl');
 
     $token=$clienteSOAP->genToken();
     $clienteSOAP->printValue("hola",$token);

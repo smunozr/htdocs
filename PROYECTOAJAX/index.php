@@ -11,9 +11,9 @@
 <body>
     <div id="menu">
         <ul>
-            <li onclick="cargaGui('Ui/Login.html',document.getElementById('central'))">LOGIN</li>
+            <li id="session" onclick="cargaGui('Ui/Login.html',document.getElementById('central'))">LOGIN</li>
             <li onclick="cargaGui('Ui/logout.html',document.getElementById('central'))">LOGOUT</li>
-            <li onclick="alert('select')">SELECT</li>
+            <li onclick="cargaGui('Ui/Select.html',document.getElementById('central'))">SELECT</li>
             <li onclick="alert('insert')">INSERT</li>
             <li onclick="alert('delete')">DELETE</li>
         </ul>

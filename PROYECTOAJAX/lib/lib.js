@@ -14,7 +14,7 @@ function guilogger(datos) {
 
 function guiSelect(datos){
     ObjJson=JSON.parse(datos);
-    console.log(JSON.stringify(ObjJson))
+    keys = Object.keys(ObjJson)//terminarlo
     let contenedor=document.getElementById("central")
     let table=document.createElement("table")
     let row=document.createElement("tr")

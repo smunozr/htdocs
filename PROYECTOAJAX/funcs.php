@@ -40,18 +40,12 @@
             $sql = "SELECT titulo, duracion FROM articulos";
             $res = mysqli_query($cnn, $sql);
             $result=mysqli_fetch_all($res);
-            $json="{
-                'Datos':{
-                ";
+            $json='{"Peliculas":[';
            foreach ($result as $value){
-                $json.="
-                'pelicula':{
-                    'titulo':'$value[0]',
-                    'duracion':'$value[1]'
-                }";
+                $json.='{"titulo":'.'"'.$value[0].'"'.',"duracion":'.'"'.$value[1].'"'."},";
             }
-           $json.="}
-           }";
+           $json=substr($json, 0, -1);
+           $json.="]}";
        // }
         return $json;
     }

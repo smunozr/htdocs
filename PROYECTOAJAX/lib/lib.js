@@ -8,8 +8,20 @@ function guilogger(datos) {
     objXML=parser.parseFromString(datos, "text/xml");
     resp=objXML.getElementsByTagName("status")[0].textContent
     if(resp=="OK"){
-        document.getElementById("sesion")
+        document.getElementById("central").innerHTML="";
     }
+}
+
+function guiSelect(datos){
+    ObjJson=JSON.parse(datos);
+    console.log(JSON.stringify(ObjJson))
+    let contenedor=document.getElementById("central")
+    let table=document.createElement("table")
+    let row=document.createElement("tr")
+    let col=document.createElement("td")
+
+
+
 }
 function cargaGui(param,div) {
 

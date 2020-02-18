@@ -1,20 +1,19 @@
 <?php
-include_once ("BODY.php");
-include_once ("HEAD.php");
+
 
 class HTML
 {
-    private $body;
-    private $head;
-
-    public function __construct($body="",$head="")
+    protected $head;
+    protected $body;
+    public function __construct($head,$body)
     {
-        $this->body=$body;
         $this->head=$head;
+        $this->body=$body;
+
     }
 
     public function __toString()
     {
-        return '<!DOCTYPE html>'."\n".'<html lang=\"en\">'."\n".$this->head."\n".$this->body."\n".'</html>';
+        return"<DOCTYPE html>\n<html lang='es'>\n".$this->head."\n".$this->body."\n"."</html>";
     }
 }

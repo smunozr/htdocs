@@ -1,10 +1,10 @@
 <?php
-include ("Td.php");
+include("Tr.php");
+
 /**
- * Clase que genera etiquetas Tr para rellenar las tablas.
- * Contiene metodos para generar atributos y contenido de cada tr el cual es siempre un elemento de la clase Td.
+ * Clase Table que genera tablas a partir de objetos Td y Tr que le vayamos pasando.
  */
-class Tr
+class Table
 {
     protected $inicio;
     protected $medio;
@@ -15,22 +15,23 @@ class Tr
     {
         switch (sizeof($param)){
             case 0:
-                $this->inicio="<tr ";
+                $this->inicio="<table ";
                 $this->medio=">\n";
                 $this->contenido="\n";
-                $this->cierre="</tr>\n";
+                $this->cierre="</table>\n";
                 break;
             default:
-                $this->inicio="<tr ";
+                $this->inicio="<table ";
                 $this->medio=">\n";
                 foreach ($param as $valor){
-                    if($valor instanceof Td){
+                    if($valor instanceof Tr){
                         $this->contenido=$this->contenido.$valor;
                     }
                 }
-                $this->cierre="</tr>\n";
+                $this->cierre="</table>\n";
                 break;
         }
+
     }
 
     public function setAtributos(...$param){
@@ -52,4 +53,5 @@ class Tr
     public function __toString(){
         return $this->inicio.$this->medio.$this->contenido.$this->cierre;
     }
+
 }

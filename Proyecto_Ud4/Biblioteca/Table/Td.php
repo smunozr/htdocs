@@ -13,7 +13,6 @@ class Td
 
     public function __construct()
     {
-        $this->inicio="<td ";
         $this->medio=">\n";
         $this->contenido="\n";
         $this->cierre="</td>\n";

@@ -7,26 +7,19 @@
 
 class A
 {
-    protected $inicio;
-    protected $cierre;
     protected $contenido;
     protected $href;
 
     public function __construct($href,$contenido)
     {
         $this->href=$href;
-        $this->inicio="<a href='$href'>\n";
-        $this->contenido=$contenido."\n";
-        $this->cierre="</a>\n";
+        $this->contenido=$contenido;
     }
 
-    public function setID($id){
-        $this->inicio="<a id='$id' href='$this->href'>\n";
-    }
 
     public function __toString()
     {
-        return $this->inicio.$this->contenido.$this->cierre;
+        return '<a href="'.$this->href.'">'.$this->contenido."</a>\n";
     }
 
 

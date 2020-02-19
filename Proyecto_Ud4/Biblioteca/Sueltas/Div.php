@@ -6,23 +6,26 @@
 
 class Div
 {
-    protected $inicio="<div>\n";
-    protected $cierre="</div>\n";
+
     protected $contenido;
+    protected $atrib;
 
-    public function __construct(...$param)
+    public function __construct($atrib)
     {
-        foreach ($param as $valor){
-            $this->contenido=$this->contenido.$valor;
-        }
+            $this->atrib.=$atrib;
     }
 
-    public function setID($id){
-        $this->inicio="<div id='$id'>";
+    public function setContenido(...$contenido){
+
+        foreach ($contenido as $value) {
+            $this->contenido .= $value;
+        }
+
     }
+
 
     public function __toString()
     {
-        return $this->inicio.$this->contenido.$this->cierre;
+        return "<div ".$this->atrib.">"."\n".$this->contenido."\n"."</div>\n";
     }
 }

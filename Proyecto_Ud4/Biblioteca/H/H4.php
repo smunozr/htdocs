@@ -12,7 +12,7 @@ class H4
 
     public function __toString()
     {
-        return "<h4>".$this->value."</h4>"."\n";
+        return "<h4>".$this->contenido."</h4>"."\n";
     }
 
 }

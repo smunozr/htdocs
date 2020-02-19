@@ -6,23 +6,26 @@
 
 class P
 {
-    protected $inicio="<p>\n";
-    protected $cierre="</p>\n";
     protected $contenido;
+    protected $atrib;
 
-    public function __construct($contenido)
+    public function __construct($atrib)
     {
-        $this->contenido=$contenido."\n";
+        $this->atrib.=$atrib;
     }
 
-    public function setId($id){
-        $this->inicio="<p id='$id'>\n";
+    public function setContenido(...$contenido){
+
+        foreach ($contenido as $value) {
+            $this->contenido .= $value;
+        }
+
     }
+
 
     public function __toString()
     {
-        $cadena=$this->inicio.$this->contenido.$this->cierre;
-        return $cadena;
+        return "<p ".$this->atrib.">"."\n".$this->contenido."\n"."</p>\n";
     }
 
 

@@ -1,12 +1,8 @@
 <?php
-/**
- * Clase que genera etiquetas Td para rellenar las Tr de una tabla.
- * Contiene metodos para generar atributos y contenido de cada celda.
- */
 
-class Td
+
+class Th
 {
-
     protected $atrib;
     protected $contenido;
 
@@ -29,6 +25,6 @@ class Td
     }
 
     public function __toString(){
-        return "<td ".$this->atrib.">"."\n".$this->contenido."\n"."</td>";
+        return "<th ".$this->atrib.">"."\n".$this->contenido."\n"."</th>";
     }
 }

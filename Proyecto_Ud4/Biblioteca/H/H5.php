@@ -12,7 +12,7 @@ class H5
 
     public function __toString()
     {
-        return "<h5>".$this->value."</h5>"."\n";
+        return "<h5>".$this->contenido."</h5>"."\n";
     }
 
 }

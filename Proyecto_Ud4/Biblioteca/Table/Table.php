@@ -6,52 +6,29 @@ include("Tr.php");
  */
 class Table
 {
-    protected $inicio;
-    protected $medio;
-    protected $cierre;
+    protected $atrib;
     protected $contenido;
 
-    public function __construct(...$param)
+    public function __construct($atrib)
     {
-        switch (sizeof($param)){
-            case 0:
-                $this->inicio="<table ";
-                $this->medio=">\n";
-                $this->contenido="\n";
-                $this->cierre="</table>\n";
-                break;
-            default:
-                $this->inicio="<table ";
-                $this->medio=">\n";
-                foreach ($param as $valor){
-                    if($valor instanceof Tr){
-                        $this->contenido=$this->contenido.$valor;
-                    }
-                }
-                $this->cierre="</table>\n";
-                break;
-        }
+     $this->atrib=$atrib;
 
     }
 
-    public function setAtributos(...$param){
-        $atributos="";
-        foreach ($param as $valor){
-            $atributos=$atributos." ".$valor;
-        }
-        $this->medio=$atributos.$this->medio;
+    public function setAtributos($atrib){
+        $this->atrib.=$atrib;
     }
 
-    public function setContenido(...$param){
-        foreach ($param as $valor){
-            if($valor instanceof Tr){
-                $this->contenido=$this->contenido.$valor;
-            }
+    public function setContenido(...$contenido){
+
+        foreach ($contenido as $value) {
+            $this->contenido .= $value;
         }
+
     }
 
     public function __toString(){
-        return $this->inicio.$this->medio.$this->contenido.$this->cierre;
+        return "<table ".$this->atrib.">"."\n".$this->contenido."\n"."</table>";
     }
 
 }

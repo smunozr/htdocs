@@ -5,13 +5,12 @@
 
 class Img
 {
-    protected $inicio;
-    protected $cierre;
+    protected $atrib;
+
 
     public function __construct($src,$alt){
 
-        $this->inicio="<img ";
-        $this->cierre="src='$src' alt='$alt'>\n";
+        $this->atrib='src="'.$src.'" '.'alt="'.$alt.'"';
 
     }
 
@@ -20,6 +19,6 @@ class Img
     }
 
     public function __toString(){
-        return $this->inicio.$this->cierre;
+        return '<img '.$this->atrib.'>';
     }
 }

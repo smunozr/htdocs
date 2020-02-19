@@ -15,16 +15,10 @@ class Li
     public function __construct($contenido)
     {
         $this->atribs="";
-        $this->contenido=$this->contenido.$contenido."\n";
+        $this->contenido=$this->contenido.$contenido;
 
     }
 
-    public function setContenido(...$param)
-    {
-        foreach ($param as $valor) {
-            $this->contenido = $this->contenido.$valor;
-        }
-    }
 
     public function __toString(){
         return "<li".$this->atribs.">".$this->contenido."</li>"."\n";    }

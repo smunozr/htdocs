@@ -25,6 +25,6 @@ class Th
     }
 
     public function __toString(){
-        return "<th ".$this->atrib.">"."\n".$this->contenido."\n"."</th>";
+        return "<th ".$this->atrib.">"."\n".$this->contenido."\n"."</th>\n";
     }
 }

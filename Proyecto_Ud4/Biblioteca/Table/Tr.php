@@ -28,6 +28,6 @@ class Tr
     }
 
     public function __toString(){
-        return "<tr ".$this->atrib.">"."\n".$this->contenido."\n"."</tr>";
+        return "<tr ".$this->atrib.">"."\n".$this->contenido."\n"."</tr>\n";
     }
 }

@@ -71,3 +71,17 @@
         }
         return $xml;
     }
+    function loggear2($usu,$pw){
+        header("Content-Type: text/xml");
+        $cnn=mysqli_connect("localhost","root","","bodega");
+        $sql="SELECT usuario FROM sesion WHERE usuario='$usu' AND paswd='$pw'";
+        $res=mysqli_query($cnn,$sql);
+
+        if(mysqli_num_rows($res)==1){
+            $_SESSION["login"]=true;
+            $xml="<status>OK</status>";
+        }else{
+            $xml="<status>FAIL</status>";
+        }
+        return $xml;
+    }

@@ -18,20 +18,19 @@ require_once __DIR__ . '/google/vendor/autoload.php';
 $htmlBody = <<<END
 <form method="GET">
   <div>
-    <h2>Search Term: </h2><input type="search" id="q" name="q" placeholder="Enter Search Term">
+    TITULO: <input type="search" id="q" name="q" placeholder="Enter Search Term">
   </div>
-  <div>
-    <h2>Max Results:</h2> <input type="number" id="maxResults" name="maxResults" min="1" max="10" step="1" >
-  </div>
-  <br/>
-  <input type="submit" value="BUSCAR">
+ <!-- <div>
+    RESULTADOS MAXIMOS: <input type="number" id="maxResults" name="maxResults" min="1" max="10" step="1" >
+  </div>-->
+  <input type="submit" value="Search">
 </form>
 END;
 
 // This code will execute if the user entered a search query in the form
 // and submitted the form. Otherwise, the page displays the form above.
-if (isset($_GET['q']) && isset($_GET['maxResults'])) {
-    /*
+if ( isset($_GET['q'])) {
+    /* && isset($_GET['maxResults'])
      * Set $DEVELOPER_KEY to the "API key" value from the "Access" tab of the
      * Google API Console <https://console.developers.google.com/>
      * Please ensure that you have enabled the YouTube Data API for your project.
@@ -51,41 +50,30 @@ if (isset($_GET['q']) && isset($_GET['maxResults'])) {
         // query term.
         $searchResponse = $youtube->search->listSearch('id,snippet', array(
             'q' => $_GET['q'],
-            'maxResults' => $_GET['maxResults'],
+            'maxResults' => 1,
         ));
 
-        $videos = '';
+        $video = '';
         $channels = '';
         $playlists = '';
 
-
         // Add each result to the appropriate list, and then display the lists of
         // matching videos, channels, and playlists.
+         foreach ($searchResponse['items'] as $searchResult) {
+               $video = $searchResult['snippet']['title'];
+                $img='<img src="https://i.ytimg.com/vi/'.$searchResult['id']['videoId'].'/maxresdefault.jpg" width="200px" height="100px">';
+           }
 
-        foreach ($searchResponse['items'] as $searchResult) {
-            switch ($searchResult['id']['kind']) {
-                case 'youtube#video':
-                    $videos .= sprintf('<li>%s (%s)</li>',
-                        $searchResult['snippet']['title'], $searchResult['id']['videoId']);
-                    break;
-                case 'youtube#channel':
-                    $channels .= sprintf('<li>%s (%s)</li>',
-                        $searchResult['snippet']['title'], $searchResult['id']['channelId']);
-                    break;
-                case 'youtube#playlist':
-                    $playlists .= sprintf('<li>%s (%s)</li>',
-                        $searchResult['snippet']['title'], $searchResult['id']['playlistId']);
-                    break;
-            }
-        }
+
+
+      /*  if($searchResponse["id"]["kind"]=='youtube#video'){
+            $video=$searchResponse['snippet']['title'];
+            $img='<img src=\"i1.ytimg.com/vi/'.$searchResponse[]['id']['videoId'].'/maxresdefault.jpg';
+        }*/
 
         $htmlBody .= <<<END
-    <h3 class="video">Videos</h3>
-    <ul>$videos</ul>
-    <h3>Channels</h3>
-    <ul>$channels</ul>
-    <h3>Playlists</h3>
-    <ul>$playlists</ul>
+    $video
+    $img
 END;
     } catch (Google_Service_Exception $e) {
         $htmlBody .= sprintf('<p>A service error occurred: <code>%s</code></p>',

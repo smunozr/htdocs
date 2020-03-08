@@ -5,7 +5,7 @@
     $usu=$_REQUEST["usu"]??"";
     $pswd=$_REQUEST["pw"]??"";
     switch ($func){
-        case 1: echo loggear($usu, $pswd);
+        case 1: echo loggear("a", "a");
             break;
         case 2: echo logoff();
             break;
